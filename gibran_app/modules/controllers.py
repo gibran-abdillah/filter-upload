@@ -11,9 +11,11 @@ def validate_image(gambar):
     if imghdr.what(None,header) != None:
         return True 
     return False
+
+    
 @app.route('/')
 def index_page():
-    return render_template('index.html',form=FileForm())
+    return render_template('index.html',form=FileForm(),file_list=list_file)
 
 
 @app.route('/upload',methods=['POST','GET'])
@@ -38,3 +40,7 @@ def index_upload():
             flash(form.errors[0])
 
     return redirect(url_for('index_page'))
+
+@app.route('/img/<filename>')
+def show_image(filename):
+    return send_from_directory(app.config['DIR_UPLOADS'],filename)

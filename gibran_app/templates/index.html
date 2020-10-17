@@ -9,5 +9,12 @@
         {{form.my_file}}
         {{form.submit}}
     </form>
+
+ 
+   {% for your_files in file_list %}
+
+
+    <img src='{{url_for("show_image",filename=your_files)}}'><!-- harus sama dengan yang di def-->
+   {% endfor %}
 </body>
 </html>
