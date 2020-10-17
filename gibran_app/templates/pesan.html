@@ -1,0 +1,7 @@
+{% with pesan = get_flashed_messages()%}
+ {% if pesan %}
+  {% for pesans in pesan %}
+  <p>{{pesans}}</p>
+  {% endfor %}
+ {% endif %}
+ {% endwith %}
